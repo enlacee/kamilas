@@ -1,4 +1,4 @@
-<?php require_once "class/class.php"; 
+<?php require_once "class/class.php";
 
 /**
 * Evita entrar al area de acceso si existe una session

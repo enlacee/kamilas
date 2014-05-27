@@ -25,14 +25,8 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
-                <li><a href="#">Item</a></li>
-              	<li><a href="#">Item</a>
-                	<ul>
-                    	<li><a href="#">Item</a></li>
-                        <li><a href="#">Item</a></li>
-                    </ul>
-                </li>
+                </li>                
+                <li><a href="adm_new.php">Noticias</a></li>
                 <li><a href="javascript:voice(0)" onclick="show_uploader();">Multimedia</a></li>
                 <li><a href="salir.php">Salir</a></li>
                 <li class="search">

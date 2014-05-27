@@ -9,6 +9,7 @@ define('ROOT', realpath(dirname(__FILE__)) . DS);
 define('APP_PATH', ROOT . DS);
 error_reporting(1);
 include APP_PATH . "/config.php";
+include APP_PATH . "/helper.php";
 
 abstract class Config {
 
@@ -412,6 +413,28 @@ class Apps extends Config {
         
         return $rs;
     }
+    
+    public function getNews()
+    {
+        $status = 1;
+        $limit = 2;
+        $this->acentosQuery();
+        $sql = "SELECT * FROM news WHERE status = {$status} LIMIT {$limit} ";            
+        $sqlQuery = $this->_db->query($sql);
+        $sqlQuery->setFetchMode(PDO::FETCH_ASSOC);
+        $rs = $sqlQuery->fetchAll();
+        return $rs;
+    }
+    
+    public function getNew($id)
+    {
+        $this->acentosQuery();
+        $sql = "SELECT * FROM news WHERE id = {$id} LIMIT 1 ";            
+        $sqlQuery = $this->_db->query($sql);
+        $sqlQuery->setFetchMode(PDO::FETCH_ASSOC);
+        $rs = $sqlQuery->fetch();
+        return $rs;
+    }    
 
 }
 

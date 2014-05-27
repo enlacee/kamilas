@@ -1,14 +1,13 @@
-<?php 
-class ConfigSQL
-{
-	static public function configDB()
-	{
-		return $ArrayConfig = array(
-							"servidor"	 => "localhost",
-							"usuario"	 => "root",
-							"clave" 	 => "123456",
-							"basedato" 	 => "free_kamilas");	
-	}
-}
+<?php
 
-?>
+class ConfigSQL {
+
+    static public function configDB() {
+        return $ArrayConfig = array(
+            "servidor" => "localhost",
+            "usuario" => "root",
+            "clave" => "123456",
+            "basedato" => "free_kamilas");
+    }
+
+}

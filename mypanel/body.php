@@ -1,4 +1,4 @@
-<?php 
+<?php /*
 	require_once('uploader/config.php');   //Config
 	require_once('uploader/Uploader.php'); //Main php file
 	
@@ -7,4 +7,5 @@
 	$type_id = 1;
 	
 	add_uploader($object_id , $user_id, $type_id);
+        */
 ?>
