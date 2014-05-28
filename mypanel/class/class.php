@@ -5,7 +5,7 @@ if (!isset($_SESSION)) {
 
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', realpath(dirname(__FILE__)) . DS);
-define('APP_PATH', ROOT . DS);
+define('APP_PATH', ROOT);
 error_reporting(1);
 include APP_PATH . "/config.php";
 include APP_PATH . "/helper.php";
@@ -483,7 +483,7 @@ class Apps extends Config {
         if ($rows == TRUE) {
             $sql = "SELECT count(*) as count FROM news ";
             $sql .= ($status != '') ? "WHERE status = {$status} " : "WHERE 1 = 1 ";
-            $sql .= !empty($order) ? "ORDER BY created_at {$order} " : '';
+            $sql .= !empty($order) ? "ORDER BY id {$order} " : '';
             $sql .= (($limit != '') && ($offset != ''|| $offset == 0)) ? "LIMIT {$offset},{$limit} " : '';
            
             $sqlQuery = $this->_db->query($sql);
@@ -493,9 +493,9 @@ class Apps extends Config {
         } else {
             $sql = "SELECT * FROM news ";
             $sql .= ($status != '') ? "WHERE status = {$status} " : "WHERE 1 = 1 ";            
-            $sql .= !empty($order) ? "ORDER BY created_at {$order} " : '';
+            $sql .= !empty($order) ? "ORDER BY id {$order} " : '';
             $sql .= (($limit != '') && ($offset != ''|| $offset == 0)) ? "LIMIT {$offset},{$limit} " : '';
-            
+                        
             $sqlQuery = $this->_db->query($sql);
             $sqlQuery->setFetchMode(PDO::FETCH_ASSOC);
             $rs = $sqlQuery->fetchAll();            
@@ -512,9 +512,56 @@ class Apps extends Config {
         $sqlQuery->setFetchMode(PDO::FETCH_ASSOC);
         $rs = $sqlQuery->fetch();
         return $rs;
-    }     
+    }
+
+    /**
+     * Register news with array parameter
+     * @param array $array
+     */
+    public function addNew(array $array) {
+        $sql = "INSERT  INTO news (title, content, image, created_at, status) VALUES (?, ?, ?, ?, ?);";
+        $sqlQuery = $this->_db->prepare($sql);
+        $sqlQuery->bindParam(1, $array['title']);
+        $sqlQuery->bindParam(2, $array['content']);
+        $sqlQuery->bindParam(3, $array['image']);
+        $sqlQuery->bindParam(4, $array['created_at']);
+        $sqlQuery->bindParam(5, $array['status']);
+        $sqlQuery->execute();
+    }    
     
+    /**
+     * Edicion
+     * @param type $array
+     */
+    public function updateNew(array $array) {        //var_dump($array); exit;
+        $sql = "UPDATE news SET "                
+                . "title = ? "
+                . ",content = ? ";
+        $sql .= (isset($array['image'])) ? ",image = '". $array['image'] ."' " : '';
+        $sql .= ",updated_at = ? "
+                . ",status = ? ";
+        $sql .= "WHERE id = ? ";            
+        error_log(print_r($sql,true));
+        $sqlQuery = $this->_db->prepare($sql);
+        $sqlQuery->bindParam(1, $array['title']);
+        $sqlQuery->bindParam(2, $array['content']);
+        $sqlQuery->bindParam(3, $array['updated_at']);
+        $sqlQuery->bindParam(4, $array['status']);
+        $sqlQuery->bindParam(5, $array['id']);
+
+        $sqlQuery->execute();            
+    }
     
+    /**
+     * delete news
+     * @param type $id
+     */
+    public function delNew($id) {
+
+        $sql = "DELETE FROM news WHERE id = {$id}";            
+        $sqlQuery = $this->_db->prepare($sql);
+        $sqlQuery->execute();       
+    }       
 
 }
 

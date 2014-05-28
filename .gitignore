@@ -1,1 +1,10 @@
-/nbproject/private/
+# ide
+nbproject/*
+
+# imagenes noticias
+images/noticias/*
+!images/noticias/banner1.jpg
+!images/noticias/banner2.jpg
+
+#imagenes temporales
+images/tmp/*

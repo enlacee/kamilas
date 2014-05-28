@@ -25,3 +25,6 @@
 	<link rel="stylesheet" href="uploader/assets/css/style.css">
 	<link rel="stylesheet" href="uploader/assets/css/lightbox.css">
 <!--Multimedia-->
+
+<!-- zebra paginator -->
+<link rel="stylesheet" type="text/css" href="css/zebra_paginator/zebra_pagination.css">

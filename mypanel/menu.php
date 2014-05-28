@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <ul class="venus-menu">
                 <li class="active"><a href="admin.php">Panel</a></li>
-                <li><a href="#">Secciones</a>
+                <!--<li><a href="#">Secciones</a>
                 	<ul>
                     	<li><a href="javascript:voice(0)">Preconcepci&oacute;n</a>
                             <ul>
@@ -25,9 +25,9 @@
                             </ul>
                         </li>
                     </ul>
-                </li>                
+                </li>-->                
                 <li><a href="adm_new.php">Noticias</a></li>
-                <li><a href="javascript:voice(0)" onclick="show_uploader();">Multimedia</a></li>
+
                 <li><a href="salir.php">Salir</a></li>
                 <li class="search">
                 <form name="buscar" id="buscar" method="post">
