@@ -4,10 +4,10 @@ class ConfigSQL {
 
     static public function configDB() {
         return $ArrayConfig = array(
-            "servidor" => "mysql.nixiweb.com",
-            "usuario" => "u129683324_kami",
+            "servidor" => "localhost",
+            "usuario" => "root",
             "clave" => "123456",
-            "basedato" => "u129683324_kami");
+            "basedato" => "free_kamilas");
     }
 
 }
