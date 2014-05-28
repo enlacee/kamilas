@@ -561,8 +561,117 @@ class Apps extends Config {
         $sql = "DELETE FROM news WHERE id = {$id}";            
         $sqlQuery = $this->_db->prepare($sql);
         $sqlQuery->execute();       
-    }       
+    }
+    
+    
+    /**
+    * secciones
+    */
+    public function getPostBy($post_type = '', $status = '', $limit = '', $field = array())
+    {
+        $this->acentosQuery();
+        $sql = "SELECT ";
+        
+        if (is_array($field) && count($field) > 0) {
+            foreach ($field as $key => $value) {
+                if($value == 'post_type+') {
+                    $sql .= "post_type+0 AS post_type,";
+                }else {
+                    $sql .= "$value,";
+                }                
+            }
+           $sql = substr($sql, 0,(strlen($sql)-1));
+           $sql .= " ";          
+           
+        }else  {
+            $sql .= "* ";
+        }
+                       
+        if (!empty($post_type)) {
+            $sql .= "FROM posts WHERE post_type = {$post_type} ";
+            if (!empty($status)) {
+                $sql .= "AND status = {$status} ";
+            }
+        } else {
+           $sql .= "FROM posts ";
+            if (!empty($status)) {
+                $sql .= "WHERE status = {$status} ";
+            }
+        }
+        
+        if (!empty($limit)) {
+            $sql .= "LIMIT {$limit} ";
+        }
+        //echo $sql; exit;
+        $sqlQuery = $this->_db->query($sql);
+        $sqlQuery->setFetchMode(PDO::FETCH_ASSOC);
+        $rs = $sqlQuery->fetchAll();
 
+        return $rs;        
+    }
+    
+    public function getPost($id) {        
+        $rs = FALSE;
+        if (!empty($id)) {
+            $this->acentosQuery();
+            $sql = "SELECT posts.*, post_type+0 AS post_type FROM posts WHERE id = {$id} ";            
+            $sqlQuery = $this->_db->query($sql);
+            $sqlQuery->setFetchMode(PDO::FETCH_ASSOC);
+            $rs = $sqlQuery->fetch();            
+        }
+        
+        return $rs;
+    }
+    
+    public function updatePost(array $array) {
+        $sql = "UPDATE posts SET "                
+                . "title = ? "
+                . ",content = ? "
+                . ",updated_at = ? "
+                . ",status = ? ";
+        $sql .= "WHERE id = ? ";        
+        error_log(print_r($sql,true));
+        $sqlQuery = $this->_db->prepare($sql);
+        $sqlQuery->bindParam(1, $array['title']);
+        $sqlQuery->bindParam(2, $array['content']);
+        $sqlQuery->bindParam(3, $array['updated_at']);
+        $sqlQuery->bindParam(4, $array['status']);
+        $sqlQuery->bindParam(5, $array['id']);
+
+        $sqlQuery->execute();            
+    }    
+    
+    
+    // 02 
+/*    public function getPost($post_type , $status = '', $order = 'desc', $limit = '', $offset = '', $rows = false)
+    {
+        $this->acentosQuery();
+        if ($rows == TRUE) {
+            $sql = "SELECT count(*) as count FROM posts ";
+            $sql .= ($status != '') ? "WHERE status = {$status} " : "WHERE 1 = 1 ";
+            $sql .= ($post_type != '') ? "AND post_type = '{$post_type}' " : '';
+            $sql .= (!empty($order)) ? "ORDER BY id {$order} " : '';
+            $sql .= (($limit != '') && ($offset != ''|| $offset == 0)) ? "LIMIT {$offset},{$limit} " : '';
+           
+            $sqlQuery = $this->_db->query($sql);
+            $sqlQuery->setFetchMode(PDO::FETCH_ASSOC);
+            $rs = $sqlQuery->fetch();
+            $rs = is_array($rs) ? $rs['count'] : 0;
+        } else {
+            $sql = "SELECT * FROM posts ";
+            $sql .= ($status != '') ? "WHERE status = {$status} " : "WHERE 1 = 1 ";            
+            $sql .= ($post_type != '') ? "AND post_type = '{$post_type}' " : '';
+            $sql .= (!empty($order)) ? "ORDER BY id {$order} " : '';
+            $sql .= (($limit != '') && ($offset != ''|| $offset == 0)) ? "LIMIT {$offset},{$limit} " : '';
+                        
+            $sqlQuery = $this->_db->query($sql);
+            $sqlQuery->setFetchMode(PDO::FETCH_ASSOC);
+            $rs = $sqlQuery->fetchAll();            
+        }
+
+        return $rs;
+    }
+*/
 }
 
 $instancia = new Apps();

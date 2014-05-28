@@ -69,12 +69,11 @@ function select($registro, $integer) {
                     <?php endforeach; ?>
                 </ul>
             </li>
-            <li class="search">
+            <!--<li class="search">
                 <form method="get" />
-
                 <input type="text" name="search" class="search" placeholder="Buscar" />
                 </form>
-            </li>
+            </li>-->
         </ul>
     </div>
 </div>

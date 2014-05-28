@@ -1,4 +1,3 @@
-
 -- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (x86_64)
 --
 -- Host: 127.0.0.1    Database: free_kamilas
@@ -119,7 +118,7 @@ CREATE TABLE `posts` (
   `updated_at` date DEFAULT NULL,
   `status` int(1) NOT NULL DEFAULT '1' COMMENT '1= ON, 0 =OFF',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +127,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (1,'preconcepcion','Fertilidad','preconcepcion 01 CONTENT','2014-05-23','0000-00-00',1),(2,'preconcepcion','Adn y Genetica','preconcepcion 01 CONTENT','2014-05-23',NULL,1),(3,'preconcepcion','Preconcepcion','preconcepcion 02 CONTENT','2014-05-23',NULL,1),(4,'preconcepcion','Planificacion','preconcepcion 02 CONTENT','2014-05-23',NULL,1),(8,'embarazo','Cada Semana','embarazo 01 CONTENT','2014-05-23',NULL,1),(9,'embarazo','Cuidados de Mama','embarazo 02 CONTENT','2014-05-23',NULL,1),(10,'embarazo','Cuidados del bebe','embarazo 03 CONTENT','2014-05-23',NULL,1),(11,'embarazo','Baby shower','embarazo 04 CONTENT','2014-05-23',NULL,1),(12,'bebes','Primeras Horas','Primeras Horas CONTENT','2014-05-23',NULL,1),(13,'bebes','Recien Nacidos','bebes 03 CONTENT','2014-05-23',NULL,1),(14,'ninos','niños 1','ninos 01 CONTENT','2014-05-23',NULL,1),(15,'ninos','niños 2','ninos 02 CONTENT','2014-05-23',NULL,1),(16,'ninos','niños 3','ninos 03 CONTENT','2014-05-23',NULL,1),(17,'adolescentes','Salud','adolescentes 01 Salud','2014-05-23',NULL,1),(18,'adolescentes','Higiene','adolescentes 02 Higiene','2014-05-23',NULL,1),(19,'adolescentes','Valores','adolescentes 03 Valores','2014-05-23',NULL,1),(20,'adolescentes','Cambios','adolescentes 04 Cambios','2014-05-23',NULL,1),(21,'embarazo','Baby shower','Baby shower CONTENT','2014-05-23',NULL,1),(22,'embarazo','Parto','Parto content','2014-05-23',NULL,1),(23,'embarazo','Post parto','Post parto content','2014-05-23',NULL,1),(24,'bebes','Salud del bebe','Salud del bebe','2014-05-23',NULL,1),(25,'bebes','Higiene del bebe','Higiene del bebe','2014-05-23',NULL,1),(26,'bebes','Lactancia','Lactancia',NULL,NULL,1),(27,'bebes','Bebe','Bebe',NULL,NULL,1),(28,'adolescentes','Sociedad','content Sociedad','2014-05-26',NULL,1);
+INSERT INTO `posts` VALUES (1,'preconcepcion','Fertilidad','\r\n<p>preconcepcion 01 CONTENT 123<span style=\"font-weight: bold;\">123</span></p>\r\n<p>&nbsp;hello wo</p>\r\n<p><span style=\"font-weight: bold;\"> </span></p>             ','2014-05-23','2014-05-28',1),(2,'preconcepcion','Adn y Genetica','preconcepcion 01 CONTENT','2014-05-23',NULL,1),(3,'preconcepcion','Preconcepcion','preconcepcion 02 CONTENT','2014-05-23',NULL,1),(4,'preconcepcion','Planificacion','preconcepcion 02 CONTENT','2014-05-23',NULL,1),(8,'embarazo','Cada Semana','embarazo 01 CONTENT','2014-05-23',NULL,1),(9,'embarazo','Cuidados de Mama','embarazo 02 CONTENT','2014-05-23',NULL,1),(10,'embarazo','Cuidados del bebe','embarazo 03 CONTENT','2014-05-23',NULL,1),(11,'embarazo','Baby shower','embarazo 04 CONTENT','2014-05-23',NULL,1),(12,'bebes','Primeras Horas','Primeras Horas CONTENT','2014-05-23',NULL,1),(13,'bebes','Recien Nacidos','bebes 03 CONTENT','2014-05-23',NULL,1),(14,'ninos','Salud del niño','Salud del niño CONTENT','2014-05-23',NULL,1),(15,'ninos','Mes a Mes','Mes a Mes content','2014-05-23',NULL,1),(16,'ninos','Valores','Valores CONTENT','2014-05-23',NULL,1),(17,'adolescentes','Salud','adolescentes 01 Salud','2014-05-23',NULL,1),(18,'adolescentes','Higiene','adolescentes 02 Higiene','2014-05-23',NULL,1),(19,'adolescentes','Valores','adolescentes 03 Valores','2014-05-23',NULL,1),(20,'adolescentes','Cambios','adolescentes 04 Cambios','2014-05-23',NULL,1),(21,'embarazo','Baby shower','Baby shower CONTENT','2014-05-23',NULL,1),(22,'embarazo','Parto','Parto content','2014-05-23',NULL,1),(23,'embarazo','Post parto','Post parto content','2014-05-23',NULL,1),(24,'bebes','Salud del bebe','Salud del bebe','2014-05-23',NULL,1),(25,'bebes','Higiene del bebe','Higiene del bebe','2014-05-23',NULL,1),(26,'bebes','Lactancia','Lactancia',NULL,NULL,1),(27,'bebes','Bebe','Bebe',NULL,NULL,1),(28,'adolescentes','Sociedad','content Sociedad','2014-05-26',NULL,1),(29,'ninos','Valores','Valores content','2014-05-28',NULL,1),(30,'ninos','Educacion','Educacion content','2014-05-28',NULL,1);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,4 +167,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-28  2:26:18
+-- Dump completed on 2014-05-28 16:00:55

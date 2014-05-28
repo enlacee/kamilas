@@ -1,41 +1,74 @@
+<?php
+$menuItem = $instancia->getPostBy('', '', '', array('id', 'post_type+', 'title'));
+
+?>
+<?php if (is_array($menuItem) && count($menuItem) > 0 ) : ?>
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-12">
             <ul class="venus-menu">
                 <li class="active"><a href="admin.php">Panel</a></li>
-                <!--<li><a href="#">Secciones</a>
+                <li><a href="#">Secciones</a>
                 	<ul>
                     	<li><a href="javascript:voice(0)">Preconcepci&oacute;n</a>
                             <ul>
-                                <li><a href="fertilidad.php">Fertilidad</a></li>
-                                <li><a href="adn-y-genetica.php">Adn y Genetica</a></li>
-                                <li><a href="editar_preconcepcion.php?id=1">Preconcepcion</a></li>
-                                <li><a href="planificacion.php">Planificacion</a></li>
+                            <?php foreach ($menuItem as $array) : ?>
+                                <?php if ($array['post_type'] == 1) : ?>
+                                    <li><a href="adm_section_edit.php?p=<?php echo $array['id'] ?>"><?php echo $array['title'] ?></a></li>                        
+                                <?php endif; ?>                    
+                            <?php endforeach; ?>
                             </ul>
                         </li>
                         <li><a href="javascript:voice(0)">Embarazo</a>
                             <ul>
-                                <li><a href="editar_embarazo.php?id=1">Embarazo</a></li>
-                                <li><a href="cada-semana.php">Cada Semana</a></li>
-                                <li><a href="cuidados-de-mama.php">Cuidados de Mama</a></li>
-                                <li><a href="cuidados-del-bebe.php">Cuidados del bebe</a></li>
-                                <li><a href="baby-shower.php">Baby shower</a></li>
-                                <li><a href="parto.php">Parto</a></li>
-                                <li><a href="post-parto.php">Post parto</a></li>
+                            <?php foreach ($menuItem as $array) : ?>
+                                <?php if ($array['post_type'] == 2) : ?>
+                                    <li><a href="adm_section_edit.php?p=<?php echo $array['id'] ?>"><?php echo $array['title'] ?></a></li>                        
+                                <?php endif; ?>                    
+                            <?php endforeach; ?>
                             </ul>
                         </li>
+                        <li><a href="javascript:voice(0)">Bebes</a>
+                            <ul>
+                            <?php foreach ($menuItem as $array) : ?>
+                                <?php if ($array['post_type'] == 3) : ?>
+                                    <li><a href="adm_section_edit.php?p=<?php echo $array['id'] ?>"><?php echo $array['title'] ?></a></li>                        
+                                <?php endif; ?>                    
+                            <?php endforeach; ?>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:voice(0)">Niños</a>
+                            <ul>
+                            <?php foreach ($menuItem as $array) : ?>
+                                <?php if ($array['post_type'] == 4) : ?>
+                                    <li><a href="adm_section_edit.php?p=<?php echo $array['id'] ?>"><?php echo $array['title'] ?></a></li>                        
+                                <?php endif; ?>                    
+                            <?php endforeach; ?>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:voice(0)">Adolescentes</a>
+                            <ul>
+                            <?php foreach ($menuItem as $array) : ?>
+                                <?php if ($array['post_type'] == 5) : ?>
+                                    <li><a href="adm_section_edit.php?p=<?php echo $array['id'] ?>"><?php echo $array['title'] ?></a></li>                        
+                                <?php endif; ?>                    
+                            <?php endforeach; ?>
+                            </ul>
+                        </li>                        
                     </ul>
-                </li>-->                
+                </li>                
                 <li><a href="adm_new.php">Noticias</a></li>
 
                 <li><a href="salir.php">Salir</a></li>
                 <li class="search">
-                <form name="buscar" id="buscar" method="post">
-                
+                <!--<form name="buscar" id="buscar" method="post">                
                 <input type="text" name="search" class="search" placeholder="Buscar" />
-                </form>
+                </form>-->
                 </li>
             </ul>
         </div>
     </div>
 </div>
+<?php else : ?>
+<p>No se encontraron datos.</p>
+<?php endif; ?>
