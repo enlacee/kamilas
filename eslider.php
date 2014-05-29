@@ -14,11 +14,11 @@
             <img src="images/bannerCentral/<?php echo $array['image'] ?>" />
           </li>
         <?php elseif($key == 1) : ?>
-            <li data-delay="4" data-trans3d="tr1,tr16" data-trans2d="tr2"> 
+            <li data-delay="4" data-trans3d="tr1,tr16" data-trans2d="tr3"> 
               <img src="cute-theme/blank.jpg" data-src="images/bannerCentral/<?php echo $array['image'] ?>"/>
             </li>
-        <?php elseif($key == 1) : ?>
-            <li data-delay="4" data-trans3d="tr1,tr16" data-trans2d="tr2"> 
+        <?php elseif($key == 2) : ?>
+            <li data-delay="6" data-trans3d="tr18" data-trans2d="tr4"> 
               <img src="cute-theme/blank.jpg" data-src="images/bannerCentral/<?php echo $array['image'] ?>"/>
             </li>
         <?php else : ?>
