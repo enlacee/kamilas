@@ -32,6 +32,8 @@ abstract class Config {
 											dbname=' . $IncArray["basedato"] . '', $IncArray["usuario"], $IncArray["clave"]);
             $dbConnect->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             $dbConnect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $dbConnect->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES 'utf8'");
+            
             return $dbConnect;
         } catch (PDOException $e) {
             die("Error");
@@ -534,23 +536,19 @@ class Apps extends Config {
      * Edicion
      * @param type $array
      */
-    public function updateNew(array $array) {        //var_dump($array); exit;
+    public function updateNew(array $array) {
+        self::acentosQuery();
         $sql = "UPDATE news SET "                
-                . "title = ? "
-                . ",content = ? ";
-        $sql .= (isset($array['image'])) ? ",image = '". $array['image'] ."' " : '';
-        $sql .= ",updated_at = ? "
-                . ",status = ? ";
-        $sql .= "WHERE id = ? ";            
-        error_log(print_r($sql,true));
+                . "title = '" . $array['title'] . "' "
+                . ",content = '" . $array['content'] . "' "
+                . ",image = '" . $array['image'] . "' "
+                . ",updated_at = '" . $array['updated_at'] . "' "
+                . ",status = '" . $array['status'] . "' ";
+        $sql .= "WHERE id = '". $array['id'] . "' ";
+        
+        //echo $sql; exit;
         $sqlQuery = $this->_db->prepare($sql);
-        $sqlQuery->bindParam(1, $array['title']);
-        $sqlQuery->bindParam(2, $array['content']);
-        $sqlQuery->bindParam(3, $array['updated_at']);
-        $sqlQuery->bindParam(4, $array['status']);
-        $sqlQuery->bindParam(5, $array['id']);
-
-        $sqlQuery->execute();            
+        $sqlQuery->execute();
     }
     
     /**

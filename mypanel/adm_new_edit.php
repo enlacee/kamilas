@@ -35,7 +35,8 @@ if (isset($_SESSION) && !empty($_SESSION) && $_SESSION["usuario"]) {
 
     
     $session = imageArraySession();   
-    if (count($_POST) > 0 ) {        
+    if (count($_POST) > 0 ) {
+        $data['image'] = '';
         if (is_array($session)) {
             //$data['id'] = $session['id'];
             $data['image'] = $session['name'];          
@@ -62,7 +63,7 @@ if (isset($_SESSION) && !empty($_SESSION) && $_SESSION["usuario"]) {
     ?><!DOCTYPE html>
     <html lang="en">
         <head>
-            <meta charset="utf-8">
+            <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta name="description" content="">
