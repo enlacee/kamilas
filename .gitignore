@@ -8,3 +8,13 @@ images/noticias/*
 
 #imagenes temporales
 images/tmp/*
+
+# imagenes banners
+images/bannerCentral/*
+!images/bannerCentral/1.jpg
+!images/bannerCentral/2.jpg
+!images/bannerCentral/3.jpg
+!images/bannerCentral/4.jpg
+!images/bannerCentral/5.jpg
+!images/bannerCentral/1401346943.jpg
+

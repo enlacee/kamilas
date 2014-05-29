@@ -434,7 +434,17 @@ class Apps extends Config {
         $sqlQuery->setFetchMode(PDO::FETCH_ASSOC);
         $rs = $sqlQuery->fetch();
         return $rs;
-    }    
+    }
+    
+    public function getBanners($limit)
+    {   
+        $this->acentosQuery();
+        $sql = "SELECT banners.*, position+0 AS id_position FROM banners LIMIT {$limit} ";            
+        $sqlQuery = $this->_db->query($sql);
+        $sqlQuery->setFetchMode(PDO::FETCH_ASSOC);
+        $rs = $sqlQuery->fetchAll();
+        return $rs;
+    }
 
 }
 

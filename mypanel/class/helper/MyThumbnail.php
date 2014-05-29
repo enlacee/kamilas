@@ -26,22 +26,21 @@ class MyThumbnail
     
     /**
      * Generate thumbnail
-     * @param String $updir directory origin imagen
-     * @param String $extension of file example: (jpg, png, gif)
-     * @param Integer $id Char unique
+     * @param String $updir directory origin imagen     
+     * @param String $fileImage
      * @param String $saveDir directory for save new thumbnail
      */
-    public function makeThumbnail($updir, $extension, $id, $saveDir)
+    public function makeThumbnail($updir, $fileImage, $saveDir)
     {
-        $this->process($updir, $extension, $id, $saveDir);
+        $this->process($updir, $fileImage, $saveDir);
     }
     
     /**
      * process
      */
-    private function process($updir, $extension, $id, $saveDir)
+    private function process($updir, $fileImage, $saveDir)
     {
-        $arr_image_details = getimagesize($updir . $id . $extension); // pass id to thumb name
+        $arr_image_details = getimagesize($updir . $fileImage); // pass id to thumb name
         $original_width = $arr_image_details[0];
         $original_height = $arr_image_details[1];
         if ($original_width > $original_height) {
@@ -66,11 +65,11 @@ class MyThumbnail
             $imgcreatefrom = "ImageCreateFromPNG";
         }
         if ($imgt) {
-            $old_image = $imgcreatefrom($updir . $id . $extension);
+            $old_image = $imgcreatefrom($updir . $fileImage);
             $new_image = imagecreatetruecolor($this->thumbnail_width, $this->thumbnail_height);
             imagecopyresized($new_image, $old_image, $dest_x, $dest_y, 0, 0, $new_width, $new_height, $original_width, $original_height);
             //$updir = !empty($dirLocation) ? $dirLocation : $updir;
-            $imgt($new_image, $saveDir . $id . $extension);
+            $imgt($new_image, $saveDir . $fileImage);
         }
   
     }

@@ -8,13 +8,18 @@ $menuItem = $instancia->getPostBy('', '', '', array('id', 'post_type+', 'title')
         <div class="col-md-12">
             <ul class="venus-menu">
                 <li class="active"><a href="admin.php">Panel</a></li>
+                <li><a href="#">Banner</a>
+                    <ul>
+                        <li><a href="adm_banner.php">Banner Central</a></li>
+                    </ul>
+                </li>
                 <li><a href="#">Secciones</a>
                 	<ul>
                     	<li><a href="javascript:voice(0)">Preconcepci&oacute;n</a>
                             <ul>
                             <?php foreach ($menuItem as $array) : ?>
                                 <?php if ($array['post_type'] == 1) : ?>
-                                    <li><a href="adm_section_edit.php?p=<?php echo $array['id'] ?>"><?php echo $array['title'] ?></a></li>                        
+                                    <li><a href="adm_section_edit.php?p=<?php echo $array['id'] ?>"><?php echo $array['title'] ?></a></li>
                                 <?php endif; ?>                    
                             <?php endforeach; ?>
                             </ul>

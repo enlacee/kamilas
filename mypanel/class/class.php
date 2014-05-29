@@ -10,6 +10,7 @@ error_reporting(1);
 include APP_PATH . "/config.php";
 include APP_PATH . "/helper.php";
 include APP_PATH . "/helper/Zebra_Pagination.php";
+include APP_PATH . "/helper/MyThumbnail.php";
 
 abstract class Config {
 
@@ -561,8 +562,7 @@ class Apps extends Config {
         $sql = "DELETE FROM news WHERE id = {$id}";            
         $sqlQuery = $this->_db->prepare($sql);
         $sqlQuery->execute();       
-    }
-    
+    }    
     
     /**
     * secciones
@@ -640,17 +640,18 @@ class Apps extends Config {
 
         $sqlQuery->execute();            
     }    
-    
-    
-    // 02 
-/*    public function getPost($post_type , $status = '', $order = 'desc', $limit = '', $offset = '', $rows = false)
+
+    /**
+     * list of banner by position (central,footer, etc)
+     */
+    public function getbanners($position = '', $status = '', $order = 'desc', $limit = '', $offset = '', $rows = false)
     {
         $this->acentosQuery();
         if ($rows == TRUE) {
-            $sql = "SELECT count(*) as count FROM posts ";
+            $sql = "SELECT count(*) as count FROM banners ";
             $sql .= ($status != '') ? "WHERE status = {$status} " : "WHERE 1 = 1 ";
-            $sql .= ($post_type != '') ? "AND post_type = '{$post_type}' " : '';
-            $sql .= (!empty($order)) ? "ORDER BY id {$order} " : '';
+            $sql .= ($position != '') ? "AND position = '{$position}' " : '';
+            $sql .= !empty($order) ? "ORDER BY id {$order} " : '';
             $sql .= (($limit != '') && ($offset != ''|| $offset == 0)) ? "LIMIT {$offset},{$limit} " : '';
            
             $sqlQuery = $this->_db->query($sql);
@@ -658,10 +659,10 @@ class Apps extends Config {
             $rs = $sqlQuery->fetch();
             $rs = is_array($rs) ? $rs['count'] : 0;
         } else {
-            $sql = "SELECT * FROM posts ";
-            $sql .= ($status != '') ? "WHERE status = {$status} " : "WHERE 1 = 1 ";            
-            $sql .= ($post_type != '') ? "AND post_type = '{$post_type}' " : '';
-            $sql .= (!empty($order)) ? "ORDER BY id {$order} " : '';
+            $sql = "SELECT banners.*, position+0 AS id_position  FROM banners ";
+            $sql .= ($status != '') ? "WHERE status = {$status} " : "WHERE 1 = 1 ";
+            $sql .= ($position != '') ? "AND position = '{$position}' " : '';
+            $sql .= !empty($order) ? "ORDER BY id {$order} " : '';
             $sql .= (($limit != '') && ($offset != ''|| $offset == 0)) ? "LIMIT {$offset},{$limit} " : '';
                         
             $sqlQuery = $this->_db->query($sql);
@@ -671,7 +672,25 @@ class Apps extends Config {
 
         return $rs;
     }
-*/
+    
+    public function addBanner(array $array) {
+        $image =  isset($array['image']) ? $array['image'] : '';
+        $sql = "INSERT  INTO banners (title, image, created_at, position) VALUES (?, ?, ?, ?);";        
+        $sqlQuery = $this->_db->prepare($sql);
+        $sqlQuery->bindParam(1, $array['title']);        
+        $sqlQuery->bindParam(2, $image);
+        $sqlQuery->bindParam(3, $array['created_at']);
+        $sqlQuery->bindParam(4, $array['position']);        
+        $sqlQuery->execute();
+    }
+    
+    public function delBanner($id) {
+
+        $sql = "DELETE FROM banners WHERE id = {$id}";            
+        $sqlQuery = $this->_db->prepare($sql);
+        $sqlQuery->execute();       
+    }    
+     
 }
 
 $instancia = new Apps();

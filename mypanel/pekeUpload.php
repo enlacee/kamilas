@@ -1,10 +1,10 @@
 <?php
 session_start();
-//echo 1;
-//echo realpath();
-$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : '';
 
-upload($id);
+$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : '';
+$keySession = isset($_REQUEST['key']) ? $_REQUEST['key'] : '';
+
+upload($keySession, $id);
 
 
 // ----------------------------------------------------------------------------
@@ -16,7 +16,7 @@ function getPathImage()
     return $path;
 }
 
-function upload($id = '')
+function upload($keySession, $id = '')
 {
     
     // images tmp (imagenes temporales)    
@@ -40,7 +40,7 @@ function upload($id = '')
 
             if (in_array($fileParts['extension'], $fileTypes)) {
                 move_uploaded_file($tempFile,$targetFile);
-                uploadSave($id, $fileName, $targetFile, $targetFileUrl);
+                uploadSave($keySession, $id, $fileName, $targetFile, $targetFileUrl);
                 echo '1';
             } else {
                 echo 'Invalid file type.';
@@ -49,18 +49,26 @@ function upload($id = '')
     }        
 }
 
-function uploadSave($id, $fileName, $path, $url)
+/**
+ * funcional solo para 1 imagen pekeupload
+ */
+function uploadSave($keySession, $id, $fileName, $path, $url)
 {
-    //$dataSession['banner']['img_tmp'];
-    //$dataSession = isset($_SESSION['productos']) ? $_SESSION['productos'] : array();    
     $dataSession['img_tmp'] =  array(
         'id' => $id,
         'name' => $fileName,
         'path' =>  $path,
         'url' => $url
-    );    
-    $_SESSION['productos'] = $dataSession; //echo "<pre>"; print_r($_SESSION);
+    );
+    if ($keySession == '') { // == 1
+        $_SESSION['productos'] = $dataSession; 
+    } elseif ($keySession == 2) {
+        $_SESSION['banners'] = $dataSession;
+    }
+     //echo "<pre>"; print_r($_SESSION);
+    
 } 
+
 
 
 /// ayuda

@@ -1,11 +1,34 @@
 <?php
 require_once "class/class.php";
+/*
+$thum = new MyThumbnail(1040, 392);
+$updir = '/home/anb/Escritorio/sites/colombia/kamilas/images/bannerCentral/';
+$file = "prueba.jpg";
+$saveDir = '/home/anb/Escritorio/sites/colombia/kamilas/images/bannerCentral/tmp/';
+$thum->makeThumbnail($updir, $file, $saveDir);
+*/
 
 // extra
-function getPathImage()
+function getPathImage($idPosition)
 {
-    $path = url();    
-    $path =  str_replace('mypanel/adm_banner.php', '', $path);
+    // Position (central, top, footer, etc)
+    $position= array(
+        array ('id' => 1, 'name' => 'central', 'directory' => 'images/bannerCentral/'),
+        array ('id' => 2, 'name' => 'otro1', 'directory' => 'images/bannerOtro/')              
+    );
+    
+    $path = url();
+    $nCorte = stripos($path,'mypanel');    
+    $path =  substr($path,0, $nCorte);
+    
+    if ($idPosition != '' && $idPosition > 0) {
+        foreach ($position as $array) {
+            if ( $idPosition == $array['id']) {
+                $path = $path . $array['directory'];
+                break;
+            }
+        }        
+    }
     return $path;
 }
 
@@ -84,16 +107,15 @@ if ($_SESSION && !empty($_SESSION) && $_SESSION["usuario"]) {
                     <div class="col-md-12">
                         <div class="content mgTop20 mgBottom30 pd10">                            
                             <div class="col-md-12">
-                                <h1>Noticias : <a href="adm_banner_add.php" class="btn btn-primary">Add</a></h1>
+                                <h1>Banner : <a href="adm_banner_add.php" class="btn btn-primary">Add</a></h1>
                                 <?php if (is_array($result) && count($result) > 0 ) : ?>                                
                                 <table class="table table-hover table-striped table-condensed table-responsive table-bordered">
                                     <thead>    
                                         <tr>
                                             <th width="3%" class="text-center">ID</th>
                                             <th width="30%">Title</th>
-                                            <th width="22%">Position</th>
-                                            <th width="25%">Image</th>
-                                            <th width="10%">Status</th>
+                                            <th width="32%">Position</th>
+                                            <th width="25%">Image</th>                                            
                                             <th width="10%" class="text-center">Accion</th>
                                         </tr>
                                     </thead>
@@ -103,15 +125,10 @@ if ($_SESSION && !empty($_SESSION) && $_SESSION["usuario"]) {
                                             <td class="text-center"><?php echo $array['id'] ?></td>
                                             <td><?php echo $array['title'] ?></td>
                                             <td><?php echo $array['position'] ?></td>
-                                            <td><img src="<?php echo getPathImage() ."images/noticias/". $array['image'] ?>" class="img-responsive" width="100" height="150"></td>
-                                            <td>
-                                                <span class="label label-success">Success</span>
-                                                <span class="label label-danger">danger</span>
-                                            </td>                                            
-                                            <td class="text-center">
-                                                <a href="adm_new_edit.php?id=<?php echo $array['id'] ?>"><img src="images/actualizar.png" width="20" height="20"></a>
-                                                &nbsp;
-                                                <a href="javascript:delNew(<?php echo $array[id] ?>)"><img src="images/borrar.png" width="20" height="20"></a>
+                                            <td><img src="<?php echo getPathImage($array['id_position']) .$array['image'] ?>" class="img-responsive" width="100" height="150"></td>
+                                           
+                                            <td class="text-center">                                                
+                                                <a href="javascript:delBanner(<?php echo $array[id] ?>)"><img src="images/borrar.png" width="20" height="20"></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>                                    
@@ -137,10 +154,10 @@ if ($_SESSION && !empty($_SESSION) && $_SESSION["usuario"]) {
             <?php include "footerLib.php"; ?>
         
         <script type="text/javascript">
-            function delNew(id) {
-                var status = confirm("Seguro de Eliminar");
+            function delBanner(id) {
+                var status = confirm("Seguro de eliminar?");
                 if(status) {
-                    window.location = "adm_new_del.php?id="+id;
+                    window.location = "adm_banner_del.php?id="+id;
                 }
             }        
         </script>    
@@ -150,4 +167,3 @@ if ($_SESSION && !empty($_SESSION) && $_SESSION["usuario"]) {
 }
 
 header("Location: index.php");
-?>

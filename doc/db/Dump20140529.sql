@@ -16,6 +16,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `banners`
+--
+
+DROP TABLE IF EXISTS `banners`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `banners` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) DEFAULT NULL,
+  `image` varchar(200) DEFAULT NULL,
+  `status` int(1) DEFAULT '1' COMMENT '1 = on 0= off',
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
+  `position` enum('central','otro') NOT NULL COMMENT 'category of banner',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `banners`
+--
+
+LOCK TABLES `banners` WRITE;
+/*!40000 ALTER TABLE `banners` DISABLE KEYS */;
+INSERT INTO `banners` VALUES (1,'image 01','1.jpg',1,'2014-05-28',NULL,'central'),(2,'image 02','2.jpg',1,'2014-05-28',NULL,'central'),(4,'new del','3.jpg',1,'2014-05-29',NULL,'central'),(6,'new','4.jpg',1,'2014-05-29',NULL,'central'),(7,'acccc','5.jpg',1,'2014-05-29',NULL,'central'),(9,'aaaa','1401346943.jpg',1,'2014-05-29',NULL,'central');
+/*!40000 ALTER TABLE `banners` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `multi_uploads`
 --
 
@@ -64,7 +93,7 @@ CREATE TABLE `news` (
   `updated_at` date DEFAULT NULL,
   `status` int(1) NOT NULL DEFAULT '1' COMMENT '1 = on 0 =off',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -167,4 +196,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-28 16:00:55
+-- Dump completed on 2014-05-29  2:56:08

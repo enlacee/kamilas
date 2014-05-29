@@ -4,8 +4,9 @@ require_once "class/class.php";
 // extra
 function getPathImage()
 {
-    $path = url();    
-    $path =  str_replace('mypanel/adm_new.php', '', $path);
+    $path = url();
+    $nCorte = stripos($path,'mypanel');    
+    $path =  substr($path,0, $nCorte);
     return $path;
 }
 
@@ -91,8 +92,9 @@ if ($_SESSION && !empty($_SESSION) && $_SESSION["usuario"]) {
                                         <tr>
                                             <th width="3%" class="text-center">ID</th>
                                             <th width="30%">Title</th>
-                                            <th width="47%">Description</th>
+                                            <th width="37%">Description</th>                                            
                                             <th width="10%">Image</th>
+                                            <th width="10%">Status</th>
                                             <th width="10%" class="text-center">Accion</th>
                                         </tr>
                                     </thead>
@@ -103,6 +105,11 @@ if ($_SESSION && !empty($_SESSION) && $_SESSION["usuario"]) {
                                             <td><?php echo $array['title'] ?></td>
                                             <td><?php echo truncate_string($array['content'], 120) ?></td>
                                             <td><img src="<?php echo getPathImage() ."images/noticias/". $array['image'] ?>" class="img-responsive" width="100" height="150"></td>
+                                            <td>
+                                                <?php if ($array['status'] == 1) : ?><span class="label label-success">ON</span>
+                                                <?php elseif($array['status'] == 0 ) : ?><span class="label label-danger">OFF</span>
+                                                <?php endif; ?>
+                                            </td>                                            
                                             <td class="text-center">
                                                 <a href="adm_new_edit.php?id=<?php echo $array['id'] ?>"><img src="images/actualizar.png" width="20" height="20"></a>
                                                 &nbsp;
