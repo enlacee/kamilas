@@ -1,24 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+@import url(http://fonts.googleapis.com/css?family=Boogaloo|Averia+Sans+Libre|Finger+Paint|Bubblegum+Sans|Chicle|Margarine|Patrick+Hand|Neucha|Short+Stack);
 
-@font-face {
-    font-family: 'bd_cartoon_shoutregular';
-    src: url('webfonts/bd_cartoon_shout.eot');
-    src: url('webfonts/bd_cartoon_shout.eot?#iefix') format('embedded-opentype'),
-         url('webfonts/bd_cartoon_shout.woff') format('woff'),
-         url('webfonts/bd_cartoon_shout.ttf') format('truetype'),
-         url('webfonts/bd_cartoon_shout.svg#bd_cartoon_shoutregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-  
-@font-face {
-	font-family: 'Cartwheel';
-	src: url('webfonts/2A4E94_0_0.eot');
-	src: url('webfonts/2A4E94_0_0.eot?#iefix') format('embedded-opentype'), 
-		 url('webfonts/2A4E94_0_0.woff') format('woff'), 
-		 url('webfonts/2A4E94_0_0.ttf') format('truetype');
-}
 
 
 body{
@@ -59,6 +41,23 @@ label {
     width: 100%;
 }
 
+
+h1, h2, h3, h4, h5, h6, .fuenteCartoon, .venus-menu a, .venus-menu > li > a{
+	font-family: 'Boogaloo', cursive !important;
+	font-family: 'Averia Sans Libre', cursive;
+	font-family: 'Finger Paint', cursive;
+	font-family: 'Bubblegum Sans', cursive;
+	font-family: 'Chicle', cursive;
+	font-family: 'Margarine', cursive;
+	font-family: 'Patrick Hand', cursive;
+	font-family: 'Neucha', cursive;
+	font-family: 'Short Stack', cursive; 
+}
+
+.venus-menu a, .venus-menu > li > a{
+	font-size:23px !important;	
+}
+
 h1, h2, h3, h4, h5, h6{
 	margin:10px 0;
 	text-align:left;
@@ -66,12 +65,20 @@ h1, h2, h3, h4, h5, h6{
 	font-size:20px;
 	letter-spacing:0;
 	color:#4083E3;
-	font-family:BD Cartoon Shout;
+	text-transform:uppercase !important;
+	font-size:26px !important;
 }
 
 .fuenteCartoon{
-	font-family:BD Cartoon Shout !important;	
+	font-family: 'Boogaloo', cursive !important;
+	font-size:18px !important;	
+	text-transform:uppercase !important;
 }
+
+.venus-menu > li > a {
+
+}
+
 
 p{
 	font-family: 'Open Sans', sans-serif;
