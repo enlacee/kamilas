@@ -183,7 +183,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Luis Figuera','admin','e10adc3949ba59abbe56e057f20f883e','milindex@gmail.com');
+INSERT INTO `user` VALUES (1,'Luis Figuera','admin','c4ca4238a0b923820dcc509a6f75849b','milindex@gmail.com');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
