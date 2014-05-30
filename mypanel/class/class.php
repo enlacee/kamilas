@@ -622,6 +622,7 @@ class Apps extends Config {
     }
     
     public function updatePost(array $array) {
+        self::acentosQuery();
         $sql = "UPDATE posts SET "                
                 . "title = ? "
                 . ",content = ? "
@@ -672,6 +673,7 @@ class Apps extends Config {
     }
     
     public function addBanner(array $array) {
+        self::acentosQuery();
         $image =  isset($array['image']) ? $array['image'] : '';
         $sql = "INSERT  INTO banners (title, image, created_at, position) VALUES (?, ?, ?, ?);";        
         $sqlQuery = $this->_db->prepare($sql);
