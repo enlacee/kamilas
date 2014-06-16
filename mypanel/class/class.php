@@ -522,6 +522,7 @@ class Apps extends Config {
      * @param array $array
      */
     public function addNew(array $array) {
+        self::acentosQuery();
         $sql = "INSERT  INTO news (title, content, image, created_at, status) VALUES (?, ?, ?, ?, ?);";
         $sqlQuery = $this->_db->prepare($sql);
         $sqlQuery->bindParam(1, $array['title']);
@@ -576,7 +577,7 @@ class Apps extends Config {
                     $sql .= "post_type+0 AS post_type,";
                 }else {
                     $sql .= "$value,";
-                }                
+                }
             }
            $sql = substr($sql, 0,(strlen($sql)-1));
            $sql .= " ";          

@@ -419,7 +419,7 @@ class Apps extends Config {
         $status = 1;
         $limit = 2;
         $this->acentosQuery();
-        $sql = "SELECT * FROM news WHERE status = {$status} LIMIT {$limit} ";            
+        $sql = "SELECT * FROM news WHERE status = {$status} ORDER BY id DESC LIMIT {$limit}  ";            
         $sqlQuery = $this->_db->query($sql);
         $sqlQuery->setFetchMode(PDO::FETCH_ASSOC);
         $rs = $sqlQuery->fetchAll();

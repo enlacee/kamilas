@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `free_kamilas` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `free_kamilas`;
 -- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (x86_64)
 --
 -- Host: 127.0.0.1    Database: free_kamilas
@@ -31,7 +33,7 @@ CREATE TABLE `banners` (
   `updated_at` date DEFAULT NULL,
   `position` enum('central','otro') NOT NULL COMMENT 'category of banner',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,7 +75,7 @@ CREATE TABLE `multi_uploads` (
 
 LOCK TABLES `multi_uploads` WRITE;
 /*!40000 ALTER TABLE `multi_uploads` DISABLE KEYS */;
-INSERT INTO `multi_uploads` VALUES (1,1,1,'1350486184_447226731_2-impresora-Hp-D1660-Valencia.jpg',1,'jpg',1,'13504861844472267312impresoraHpD1660Valencia','','2014-02-15 05:10:30',0),(2,1,1,'htc-android.jpg',1,'jpg',1,'htcandroid','','2014-02-17 01:43:24',0);
+INSERT INTO `multi_uploads` VALUES (1,1,1,'1350486184_447226731_2-impresora-Hp-D1660-Valencia.jpg',1,'jpg',1,'13504861844472267312impresoraHpD1660Valencia','','2014-02-15 10:10:30',0),(2,1,1,'htc-android.jpg',1,'jpg',1,'htcandroid','','2014-02-17 06:43:24',0);
 /*!40000 ALTER TABLE `multi_uploads` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +95,7 @@ CREATE TABLE `news` (
   `updated_at` date DEFAULT NULL,
   `status` int(1) NOT NULL DEFAULT '1' COMMENT '1 = on 0 =off',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +104,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (1,'¿Que es la familia?','La familia es un grupo de personas que se respeta y ama. La familia puede estar formada por el papá, la mamá, los hermanos, abuelos y abuelas, tíos y tías, primos y primas y por supuesto por ti.\r\n\r\nComo podrás observar la familia en la mayoría de los casos es bastante numerosa y por consiguiente no toda la familia cabe dentro de una misma casa. En nuestro hogar solo está un grupo reducido de la familia. Las tías y los tíos viven con sus esposos, esposas e hijos en otra casa, formando así cada uno de ellos una nueva familia.','banner1.jpg','2014-05-26','0000-00-00',1),(2,'¿Que es la familia?','La familia es un grupo de personas que se respeta y ama. La familia puede estar formada por el papá, la mamá, los hermanos, abuelos y abuelas, tíos y tías, primos y primas y por supuesto por ti.\r\n\r\nComo podrás observar la familia en la mayoría de los casos es bastante numerosa y por consiguiente no toda la familia cabe dentro de una misma casa. En nuestro hogar solo está un grupo reducido de la familia. Las tías y los tíos viven con sus esposos, esposas e hijos en otra casa, formando así cada uno de ellos una nueva familia.','banner2.jpg','2014-05-26','0000-00-00',0),(3,'xxxxxx123','xccccccc123','1401226633.png','2014-05-27','2014-05-27',0),(4,'nuevo title','nuevo content','1401221635.jpg','2014-05-27',NULL,1),(5,'test title','test title ','','2014-05-27','2014-05-27',0);
+INSERT INTO `news` VALUES (1,'¿Que es la familia? IMG','La familia es un grupo de personas que se respeta y ama. La familia puede estar formada por el papá, la mamá, los hermanos, abuelos y abuelas, tíos y tías, primos y primas y por supuesto por ti.\r\n\r\nComo podrás observar la familia en la mayoría de los casos es bastante numerosa y por consiguiente no toda la familia cabe dentro de una misma casa. En nuestro hogar solo está un grupo reducido de la familia. Las tías y los tíos viven con sus esposos, esposas e hijos en otra casa, formando así cada uno de ellos una nueva familia.&nbsp;IMG','1401402576.jpg','2014-05-26','2014-05-29',1),(2,'¿Que es la familia?','La familia es un grupo de personas que se respeta y ama. La familia puede estar formada por el papá, la mamá, los hermanos, abuelos y abuelas, tíos y tías, primos y primas y por supuesto por ti.\r\n\r\nComo podrás observar la familia en la mayoría de los casos es bastante numerosa y por consiguiente no toda la familia cabe dentro de una misma casa. En nuestro hogar solo está un grupo reducido de la familia. Las tías y los tíos viven con sus esposos, esposas e hijos en otra casa, formando así cada uno de ellos una nueva familia.','banner2.jpg','2014-05-26','0000-00-00',0),(3,'xxxxxx123','xccccccc123','1401226633.png','2014-05-27','2014-05-27',0),(4,'nuevo title','nuevo content','1401221635.jpg','2014-05-27',NULL,1),(5,'test title ñaña','test title&nbsp;ñaña ','1401402395.png','2014-05-27','2014-05-29',0),(8,'Relleno estándar de las industrias','\r\n<p><span style=\"font-weight: bold;\">Lorem Ipsum</span> es simplemente el texto \r\nde relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el \r\ntexto de relleno estándar de las industrias desde el año 1500, cuando un\r\n impresor (N. del T. persona que se dedica a la imprenta) desconocido \r\nusó una galería de textos y los mezcló de tal manera que logró hacer un \r\nlibro de textos especimen. No sólo sobrevivió 500 años, sino que tambien\r\n ingresó como texto de relleno en documentos electrónicos, quedando \r\nesencialmente igual al original. Fue popularizado en los 60s con la \r\ncreación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem \r\nIpsum, y más recientemente con software de autoedición, como por ejemplo\r\n Aldus  PageMaker, el cual incluye versiones de Lorem Ipsum.</p>\r\n<div class=\"rc\">\r\n	<p>Es\r\n un hecho establecido hace demasiado tiempo que un lector se distraerá \r\ncon el contenido del texto de un sitio mientras que mira su diseño. El \r\npunto de usar Lorem Ipsum es que tiene una distribución más o menos \r\nnormal de las letras, al contrario de usar textos como por ejemplo \r\n\"Contenido aquí, contenido aquí\". Estos textos hacen parecerlo un \r\nespañol que se puede leer. Muchos paquetes de autoedición y editores de \r\npáginas web usan el Lorem Ipsum como su texto por defecto, y al hacer \r\nuna búsqueda de \"Lorem Ipsum\" va a dar por resultado muchos sitios web \r\nque usan este texto si se encuentran en estado de desarrollo. Muchas \r\nversiones han evolucionado a trav&eacute;s de los años, algunas veces por \r\naccidente, otras veces a propósito (por ejemplo insertándole humor y \r\ncosas por el estilo).</p></div>','1402327777.jpg','2014-06-09',NULL,1);
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +120,7 @@ CREATE TABLE `paginas` (
   `titulo` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   `detalle` text CHARACTER SET utf8 COLLATE utf8_spanish_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,7 +149,7 @@ CREATE TABLE `posts` (
   `updated_at` date DEFAULT NULL,
   `status` int(1) NOT NULL DEFAULT '1' COMMENT '1= ON, 0 =OFF',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,7 +158,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (1,'preconcepcion','Fertilidad','\r\n<p>preconcepcion 01 CONTENT 123<span style=\"font-weight: bold;\">123</span></p>\r\n<p>&nbsp;hello wo</p>\r\n<p><span style=\"font-weight: bold;\"> </span></p>             ','2014-05-23','2014-05-28',1),(2,'preconcepcion','Adn y Genetica','preconcepcion 01 CONTENT','2014-05-23',NULL,1),(3,'preconcepcion','Preconcepcion','preconcepcion 02 CONTENT','2014-05-23',NULL,1),(4,'preconcepcion','Planificacion','preconcepcion 02 CONTENT','2014-05-23',NULL,1),(8,'embarazo','Cada Semana','embarazo 01 CONTENT','2014-05-23',NULL,1),(9,'embarazo','Cuidados de Mama','embarazo 02 CONTENT','2014-05-23',NULL,1),(10,'embarazo','Cuidados del bebe','embarazo 03 CONTENT','2014-05-23',NULL,1),(11,'embarazo','Baby shower','embarazo 04 CONTENT','2014-05-23',NULL,1),(12,'bebes','Primeras Horas','Primeras Horas CONTENT','2014-05-23',NULL,1),(13,'bebes','Recien Nacidos','bebes 03 CONTENT','2014-05-23',NULL,1),(14,'ninos','Salud del niño','Salud del niño CONTENT','2014-05-23',NULL,1),(15,'ninos','Mes a Mes','Mes a Mes content','2014-05-23',NULL,1),(16,'ninos','Valores','Valores CONTENT','2014-05-23',NULL,1),(17,'adolescentes','Salud','adolescentes 01 Salud','2014-05-23',NULL,1),(18,'adolescentes','Higiene','adolescentes 02 Higiene','2014-05-23',NULL,1),(19,'adolescentes','Valores','adolescentes 03 Valores','2014-05-23',NULL,1),(20,'adolescentes','Cambios','adolescentes 04 Cambios','2014-05-23',NULL,1),(22,'embarazo','Parto','Parto content','2014-05-23',NULL,1),(23,'embarazo','Post parto','Post parto content','2014-05-23',NULL,1),(24,'bebes','Salud del bebe','Salud del bebe','2014-05-23',NULL,1),(25,'bebes','Higiene del bebe','Higiene del bebe','2014-05-23',NULL,1),(26,'bebes','Lactancia','Lactancia',NULL,NULL,1),(27,'bebes','Bebe','Bebe',NULL,NULL,1),(28,'adolescentes','Sociedad','content Sociedad','2014-05-26',NULL,1),(30,'ninos','Educacion','Educacion content','2014-05-28',NULL,1);
+INSERT INTO `posts` VALUES (1,'preconcepcion','Fertilidad ÑAÑAÑ','\r\n<p>&nbsp;preconcepcion 01 CONTENT 123<span style=\"font-weight: bold;\">123</span></p>\r\n<p>&nbsp;Fertilidad ÑAÑAÑ</p>\r\n<p><span style=\"font-weight: bold;\"> </span></p>              ','2014-05-23','2014-05-29',1),(2,'preconcepcion','Adn y Genetica','preconcepcion 01 CONTENT','2014-05-23',NULL,1),(3,'preconcepcion','Preconcepcion','preconcepcion 02 CONTENT','2014-05-23',NULL,1),(4,'preconcepcion','Planificacion','preconcepcion 02 CONTENT','2014-05-23',NULL,1),(8,'embarazo','Cada Semana','embarazo 01 CONTENT','2014-05-23',NULL,1),(9,'embarazo','Cuidados de Mama','embarazo 02 CONTENT','2014-05-23',NULL,1),(10,'embarazo','Cuidados del bebe','embarazo 03 CONTENT','2014-05-23',NULL,1),(11,'embarazo','Baby shower','embarazo 04 CONTENT','2014-05-23',NULL,1),(12,'bebes','Primeras Horas','Primeras Horas CONTENT','2014-05-23',NULL,1),(13,'bebes','Recien Nacidos','bebes 03 CONTENT','2014-05-23',NULL,1),(14,'ninos','Salud del niño','Salud del niño CONTENT','2014-05-23',NULL,1),(15,'ninos','Mes a Mes','Mes a Mes content','2014-05-23',NULL,1),(16,'ninos','Valores','Valores CONTENT','2014-05-23',NULL,1),(17,'adolescentes','Salud','adolescentes 01 Salud','2014-05-23',NULL,1),(18,'adolescentes','Higiene','adolescentes 02 Higiene','2014-05-23',NULL,1),(19,'adolescentes','Valores','adolescentes 03 Valores','2014-05-23',NULL,1),(20,'adolescentes','Cambios','adolescentes 04 Cambios','2014-05-23',NULL,1),(22,'embarazo','Parto','Parto content','2014-05-23',NULL,1),(23,'embarazo','Post parto','Post parto content','2014-05-23',NULL,1),(24,'bebes','Salud del bebe','Salud del bebe','2014-05-23',NULL,1),(25,'bebes','Higiene del bebe','Higiene del bebe','2014-05-23',NULL,1),(26,'bebes','Lactancia','Lactancia',NULL,NULL,1),(27,'bebes','Bebe','Bebe',NULL,NULL,1),(28,'adolescentes','Sociedad','content Sociedad','2014-05-26',NULL,1),(30,'ninos','Educacion','Educacion content','2014-05-28',NULL,1);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +176,7 @@ CREATE TABLE `user` (
   `pass` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,4 +198,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-29 12:06:03
+-- Dump completed on 2014-06-15 19:38:31

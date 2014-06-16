@@ -32,7 +32,7 @@ if ($_SESSION && !empty($_SESSION) && $_SESSION["usuario"]) {
                       <?php echo $_SESSION['message']; unset($_SESSION['message']); ?>
                 </div>
             </div><!-- message box -->    
-            <?php endif; ?>            
+            <?php endif; ?>
             
             <div class="container">
                 <div class="row clearfix">
